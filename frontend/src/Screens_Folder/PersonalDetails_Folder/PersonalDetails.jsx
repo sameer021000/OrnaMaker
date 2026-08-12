@@ -32,7 +32,12 @@ const PersonalDetails = () => {
 
   const handleChange = (field) => (e) => {
     // Some components pass value directly, others pass event
-    const value = e && e.target ? e.target.value : e;
+    let value = e && e.target ? e.target.value : e;
+    
+    if (field === 'shopPincode' || field === 'homePincode') {
+      value = value.replace(/\D/g, '');
+    }
+
     setFormData({ ...formData, [field]: value });
     if (errors[field]) setErrors({ ...errors, [field]: null });
   };
