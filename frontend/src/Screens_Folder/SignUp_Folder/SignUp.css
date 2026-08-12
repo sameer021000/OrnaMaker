@@ -1,0 +1,66 @@
+.signup-container {
+  /* Inherits from .screen-container */
+  padding-bottom: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.password-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: var(--color-white);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid #e5e7eb;
+}
+
+.password-hints {
+  list-style-type: none;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: 0.5rem;
+  padding-left: 0.25rem;
+}
+
+.password-hints li {
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.password-hints li::before {
+  content: '○';
+  font-size: 0.6rem;
+}
+
+.password-hints li.met {
+  color: #10b981; /* emerald-500 */
+}
+
+.password-hints li.met::before {
+  content: '●';
+}
+
+.signin-link-text {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+  color: var(--color-text-dark);
+}
+
+.signin-link {
+  color: var(--color-primary-blue);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.signin-link:hover {
+  text-decoration: underline;
+}

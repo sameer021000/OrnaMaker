@@ -1,0 +1,60 @@
+.multiselect-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.multiselect-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-dark);
+  margin-left: 0.25rem;
+}
+
+.multiselect-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.25rem;
+}
+
+.multiselect-error .chip-btn {
+  border-color: var(--color-error);
+}
+
+.chip-btn {
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-full);
+  border: 1px solid #d1d5db; /* gray-300 */
+  background-color: var(--color-white);
+  color: var(--color-text-dark);
+  font-size: 0.875rem;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.chip-btn:hover {
+  border-color: var(--color-secondary-blue);
+  background-color: var(--color-accent-light);
+}
+
+.chip-selected {
+  background-color: var(--color-primary-blue);
+  color: var(--color-white);
+  border-color: var(--color-primary-blue);
+  box-shadow: var(--shadow-sm);
+}
+
+.chip-selected:hover {
+  background-color: var(--color-primary-violet);
+  border-color: var(--color-primary-violet);
+}
+
+.error-text {
+  font-size: 0.75rem;
+  color: var(--color-error);
+  margin-left: 0.25rem;
+}

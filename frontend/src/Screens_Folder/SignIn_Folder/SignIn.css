@@ -1,0 +1,37 @@
+.signin-container {
+  padding-bottom: 2rem;
+  justify-content: center;
+}
+
+.signin-header {
+  margin-bottom: 2rem;
+  margin-top: 4rem;
+}
+
+.signin-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.signin-submit {
+  margin-top: 1rem;
+}
+
+.signup-link-text {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.875rem;
+  color: var(--color-text-dark);
+}
+
+.signup-link {
+  color: var(--color-primary-blue);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.signup-link:hover {
+  text-decoration: underline;
+}

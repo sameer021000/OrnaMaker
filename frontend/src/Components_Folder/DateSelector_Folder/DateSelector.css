@@ -1,0 +1,76 @@
+.date-selector-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 100%;
+}
+
+.date-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-dark);
+  margin-left: 0.25rem;
+}
+
+.date-input-wrapper {
+  position: relative;
+  border-radius: var(--radius-md);
+  border: 1px solid #d1d5db; /* gray-300 */
+  background-color: var(--color-white);
+  height: 3rem;
+  transition: var(--transition-normal);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.date-input-wrapper:focus-within {
+  border-color: var(--color-secondary-blue);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.date-error {
+  border-color: var(--color-error);
+}
+
+.date-error:focus-within {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+}
+
+.date-field {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.date-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  font-size: 1rem;
+  color: var(--color-text-dark);
+  pointer-events: none; /* let clicks pass through to input */
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+}
+
+/* Show placeholder color if no value */
+.date-input-wrapper:not(:has(.date-field:valid)) .date-overlay {
+  color: #9ca3af;
+}
+
+.error-text {
+  font-size: 0.75rem;
+  color: var(--color-error);
+  margin-left: 0.25rem;
+  margin-top: 0.125rem;
+}
