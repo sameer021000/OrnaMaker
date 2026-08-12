@@ -1,15 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Blue and Violet Theme, strictly no black */
-  --color-primary-blue: #1e3a8a; 
-  --color-primary-violet: #5b21b6; 
-  --color-secondary-blue: #3b82f6;
-  --color-secondary-violet: #8b5cf6;
-  --color-accent-light: #e0e7ff; 
-  --color-background: #f5f3ff; 
-  --color-text-dark: #1e1b4b; 
-  --color-text-muted: #4338ca; 
+  /* Gold, Pink, Blue, Violet Theme, strictly no black */
+  --color-primary-blue: #2563eb; 
+  --color-primary-violet: #7c3aed; 
+  --color-secondary-blue: #60a5fa;
+  --color-secondary-violet: #a78bfa;
+  --color-accent-gold: #fbbf24; 
+  --color-accent-pink: #f472b6;
+  --color-accent-light: #fae8ff; 
+  --color-background: #fdfaf6; 
+  --color-text-dark: #2e1065; 
+  --color-text-muted: #6d28d9; 
   --color-error: #ef4444; 
   --color-white: #ffffff;
   
@@ -32,8 +34,8 @@
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background-color: #d8b4e2; 
-  background-image: linear-gradient(135deg, #bfdbfe 0%, #ddd6fe 100%);
+  background-color: #fce7f3; 
+  background-image: linear-gradient(135deg, #fce7f3 0%, #fef3c7 50%, #e0e7ff 100%);
   color: var(--color-text-dark);
   min-height: 100vh;
   display: flex;
