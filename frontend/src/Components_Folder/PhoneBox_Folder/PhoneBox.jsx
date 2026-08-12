@@ -8,6 +8,11 @@ const PhoneBox = ({
   onBlur,
   error,
 }) => {
+  const handlePhoneChange = (e) => {
+    e.target.value = e.target.value.replace(/\D/g, '');
+    if (onChange) onChange(e);
+  };
+
   return (
     <div className="phone-box-container">
       <label className="phone-label">{label}</label>
@@ -17,7 +22,7 @@ const PhoneBox = ({
           type="text"
           className="phone-field"
           value={value}
-          onChange={onChange}
+          onChange={handlePhoneChange}
           onBlur={onBlur}
           placeholder="0000000000"
           maxLength={10}
