@@ -20,6 +20,8 @@ const PhoneBox = ({
         <span className="phone-prefix">+91</span>
         <input
           type="text"
+          inputMode="numeric"
+          pattern="[0-9]*"
           className="phone-field"
           value={value}
           onChange={handlePhoneChange}

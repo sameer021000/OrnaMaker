@@ -179,6 +179,8 @@ const PersonalDetails = () => {
             onChange={handleChange('shopPincode')}
             error={errors.shopPincode}
             maxLength={6}
+            inputMode="numeric"
+            pattern="[0-9]*"
           />
 
           <TextAreaBox
@@ -231,6 +233,8 @@ const PersonalDetails = () => {
             onChange={handleChange('homePincode')}
             error={errors.homePincode}
             maxLength={6}
+            inputMode="numeric"
+            pattern="[0-9]*"
           />
 
           <TextAreaBox
