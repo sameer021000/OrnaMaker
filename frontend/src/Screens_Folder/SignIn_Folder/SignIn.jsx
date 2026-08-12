@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PhoneBox from '../../Components_Folder/PhoneBox_Folder/PhoneBox';
 import PasswordBox from '../../Components_Folder/PasswordBox_Folder/PasswordBox';
 import SubmitButton from '../../Components_Folder/SubmitButton_Folder/SubmitButton';
 import './SignIn.css';
 
 const SignIn = () => {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     phone: '',
     password: ''
