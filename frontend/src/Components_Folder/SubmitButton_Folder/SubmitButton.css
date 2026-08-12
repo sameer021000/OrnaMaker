@@ -1,5 +1,7 @@
 .submit-btn {
-  background-color: var(--color-primary-blue);
+  background: linear-gradient(135deg, var(--color-primary-violet) 0%, var(--color-accent-pink) 50%, var(--color-accent-gold) 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 5s ease infinite;
   color: var(--color-white);
   border: none;
   border-radius: var(--radius-full);
@@ -21,8 +23,8 @@
 }
 
 .submit-btn:hover {
-  background-color: var(--color-primary-violet);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 10px 15px -3px rgba(236, 72, 153, 0.3);
+  transform: translateY(-2px);
 }
 
 .submit-btn:active {
@@ -37,7 +39,8 @@
   margin-left: auto;
   margin-right: auto;
   cursor: default;
-  background-color: var(--color-primary-violet);
+  background: var(--color-primary-violet);
+  animation: none;
 }
 
 .btn-text {
@@ -70,4 +73,10 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }

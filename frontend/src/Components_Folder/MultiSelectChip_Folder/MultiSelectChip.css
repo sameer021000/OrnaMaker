@@ -42,15 +42,15 @@
 }
 
 .chip-selected {
-  background-color: var(--color-primary-blue);
+  background: linear-gradient(135deg, var(--color-primary-blue), var(--color-primary-violet));
   color: var(--color-white);
-  border-color: var(--color-primary-blue);
-  box-shadow: var(--shadow-sm);
+  border: 1px solid transparent;
+  box-shadow: 0 4px 6px -1px rgba(124, 58, 237, 0.2);
 }
 
 .chip-selected:hover {
-  background-color: var(--color-primary-violet);
-  border-color: var(--color-primary-violet);
+  background: linear-gradient(135deg, var(--color-primary-violet), var(--color-accent-pink));
+  transform: translateY(-1px);
 }
 
 .error-text {

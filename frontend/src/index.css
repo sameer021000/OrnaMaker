@@ -2,16 +2,16 @@
 
 :root {
   /* Gold, Pink, Blue, Violet Theme, strictly no black */
-  --color-primary-blue: #2563eb; 
-  --color-primary-violet: #7c3aed; 
-  --color-secondary-blue: #60a5fa;
+  --color-primary-blue: #0ea5e9; /* Sky blue */
+  --color-primary-violet: #8b5cf6; /* Soft violet */
+  --color-secondary-blue: #38bdf8;
   --color-secondary-violet: #a78bfa;
-  --color-accent-gold: #fbbf24; 
-  --color-accent-pink: #f472b6;
-  --color-accent-light: #fae8ff; 
-  --color-background: #fdfaf6; 
-  --color-text-dark: #2e1065; 
-  --color-text-muted: #6d28d9; 
+  --color-accent-gold: #f59e0b; /* Rich amber/gold */
+  --color-accent-pink: #ec4899; /* Vibrant pink */
+  --color-accent-light: #fce7f3; /* Light pink background accents */
+  --color-background: #faf5ff; /* Very subtle violet/pink app background */
+  --color-text-dark: #31135e; /* Deep plum (no black) */
+  --color-text-muted: #7c3aed; 
   --color-error: #ef4444; 
   --color-white: #ffffff;
   
