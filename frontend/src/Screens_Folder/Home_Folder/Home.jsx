@@ -28,6 +28,16 @@ const TEAM_SIZES = [
   { label: '10+ Members', value: '10+ Members' }
 ];
 
+const DAYS_OF_WEEK = [
+  { label: 'Mon', value: 'Mon' },
+  { label: 'Tue', value: 'Tue' },
+  { label: 'Wed', value: 'Wed' },
+  { label: 'Thu', value: 'Thu' },
+  { label: 'Fri', value: 'Fri' },
+  { label: 'Sat', value: 'Sat' },
+  { label: 'Sun', value: 'Sun' }
+];
+
 const Home = () => {
   const navigate = useNavigate();
   const { signUpData, updateSignUpData } = useSignUp();
@@ -43,9 +53,11 @@ const Home = () => {
     profilePic: signUpData.profilePic || null,
     shopName: signUpData.shopName || '',
     ornamentTypes: signUpData.ornamentTypes || [],
+    otherOrnamentType: signUpData.otherOrnamentType || '',
     teamSize: signUpData.teamSize || 'Individual',
-    workingHours: signUpData.workingHours || '',
-    weeklyHolidays: signUpData.weeklyHolidays || '',
+    workingHoursFrom: signUpData.workingHoursFrom || '',
+    workingHoursTo: signUpData.workingHoursTo || '',
+    weeklyHolidays: signUpData.weeklyHolidays || [],
     workImages: signUpData.workImages || [],
     shopPhotos: signUpData.shopPhotos || [],
     workVideos: signUpData.workVideos || []
@@ -61,7 +73,7 @@ const Home = () => {
     if (formData.profilePic) completed++;
     if (formData.shopName) completed++;
     if (formData.ornamentTypes.length > 0) completed++;
-    if (formData.workingHours) completed++;
+    if (formData.workingHoursFrom && formData.workingHoursTo) completed++;
     if (formData.workImages.length > 0) completed++;
     if (formData.shopPhotos.length > 0) completed++;
     
@@ -79,6 +91,9 @@ const Home = () => {
     if (!formData.profilePic) newErrors.profilePic = 'Profile picture is mandatory.';
     if (!formData.shopName) newErrors.shopName = 'Shop name is required.';
     if (formData.ornamentTypes.length === 0) newErrors.ornamentTypes = 'Select at least one type.';
+    if (formData.ornamentTypes.includes('others') && !formData.otherOrnamentType) {
+      newErrors.otherOrnamentType = 'Please specify the ornament type.';
+    }
     if (formData.workImages.length === 0) newErrors.workImages = 'Upload at least one work image.';
     if (formData.shopPhotos.length === 0) newErrors.shopPhotos = 'Upload at least one shop photo.';
     
@@ -128,7 +143,7 @@ const Home = () => {
           <h3 className="module-title">Identity</h3>
           <div className="module-body">
             <ImageUploader 
-              label="Profile Picture (Mandatory)" 
+              label="Profile Picture" 
               multiple={false} 
               files={formData.profilePic} 
               onFilesChange={(val) => handleChange('profilePic', val)}
@@ -155,6 +170,15 @@ const Home = () => {
               onChange={(val) => handleChange('ornamentTypes', val)}
               error={errors.ornamentTypes}
             />
+            {formData.ornamentTypes.includes('others') && (
+              <InputBox 
+                label="Please specify 'Others'" 
+                value={formData.otherOrnamentType} 
+                onChange={(e) => handleChange('otherOrnamentType', e.target.value)}
+                error={errors.otherOrnamentType}
+                placeholder="e.g. Brooches"
+              />
+            )}
             <SegmentedControl 
               label="Team Size" 
               options={TEAM_SIZES} 
@@ -167,18 +191,26 @@ const Home = () => {
         {/* 4. Operations Card */}
         <div className="module-card">
           <h3 className="module-title">Operations</h3>
-          <div className="module-body row">
-            <InputBox 
-              label="Working Hours" 
-              value={formData.workingHours} 
-              onChange={(e) => handleChange('workingHours', e.target.value)}
-              placeholder="e.g. 9 AM - 6 PM"
-            />
-            <InputBox 
+          <div className="module-body">
+            <div className="row">
+              <InputBox 
+                label="Working Hours (From)" 
+                type="time"
+                value={formData.workingHoursFrom} 
+                onChange={(e) => handleChange('workingHoursFrom', e.target.value)}
+              />
+              <InputBox 
+                label="Working Hours (To)" 
+                type="time"
+                value={formData.workingHoursTo} 
+                onChange={(e) => handleChange('workingHoursTo', e.target.value)}
+              />
+            </div>
+            <MultiSelectChip 
               label="Weekly Holidays" 
-              value={formData.weeklyHolidays} 
-              onChange={(e) => handleChange('weeklyHolidays', e.target.value)}
-              placeholder="e.g. Sunday"
+              options={DAYS_OF_WEEK} 
+              selectedOptions={formData.weeklyHolidays} 
+              onChange={(val) => handleChange('weeklyHolidays', val)}
             />
           </div>
         </div>
@@ -204,6 +236,7 @@ const Home = () => {
             <ImageUploader 
               label="Work Videos (Optional)" 
               multiple={true} 
+              accept="video/*"
               files={formData.workVideos} 
               onFilesChange={(val) => handleChange('workVideos', val)}
             />
