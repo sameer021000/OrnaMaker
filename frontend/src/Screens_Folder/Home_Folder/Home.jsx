@@ -163,7 +163,8 @@ const Home = () => {
     if (formData.shopPhotos.length === 0) newErrors.shopPhotos = 'Upload at least one shop photo.';
     else if (formData.shopPhotos.length > 7) newErrors.shopPhotos = 'Max 7 photos allowed.';
     
-    if (formData.workVideos.length > 10) newErrors.workVideos = 'Max 10 videos allowed.';
+    if (formData.workVideos && formData.workVideos.length > 10) newErrors.workVideos = 'Max 10 videos allowed.';
+    if (formData.shopVideos && formData.shopVideos.length > 3) newErrors.shopVideos = 'Max 3 videos allowed.';
     if (formData.certificate && formData.certificate.length > 7) newErrors.certificate = 'Max 7 PDFs allowed.';
     
     setErrors(newErrors);
@@ -323,11 +324,12 @@ const Home = () => {
               error={errors.workVideos}
             />
             <ImageUploader 
-              label="Shop Videos (Optional)" 
+              label="Shop Videos (Optional, Max 3)" 
               multiple={true} 
               accept="video/*"
               files={formData.shopVideos} 
               onFilesChange={(val) => handleChange('shopVideos', val)}
+              error={errors.shopVideos}
             />
           </div>
         </div>
