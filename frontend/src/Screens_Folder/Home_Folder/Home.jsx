@@ -21,6 +21,13 @@ const ORNAMENT_TYPES = [
   { label: 'Others', value: 'others' }
 ];
 
+const WORK_MAP = {
+  'maker': 'Ornament Maker',
+  'cutting': 'Ornament Cutting',
+  'enamel': 'Enamel on Ornament',
+  'polish': 'Ornament Polish'
+};
+
 const TEAM_SIZES = [
   { label: 'Individual', value: 'Individual' },
   { label: '2-5 Members', value: '2-5 Members' },
@@ -89,10 +96,23 @@ const Home = () => {
     const newErrors = {};
 
     if (!formData.profilePic) newErrors.profilePic = 'Profile picture is mandatory.';
-    if (!formData.shopName) newErrors.shopName = 'Shop name is required.';
+    
+    const shopNameRegex = /^[A-Za-z0-9@#$_\-&+*:;!?()[\]]+( [A-Za-z0-9@#$_\-&+*:;!?()[\]]+)*$/;
+    if (!formData.shopName) {
+      newErrors.shopName = 'Shop name is required.';
+    } else if (!shopNameRegex.test(formData.shopName)) {
+      newErrors.shopName = 'Invalid characters or multiple spaces.';
+    }
+
     if (formData.ornamentTypes.length === 0) newErrors.ornamentTypes = 'Select at least one type.';
-    if (formData.ornamentTypes.includes('others') && !formData.otherOrnamentType) {
-      newErrors.otherOrnamentType = 'Please specify the ornament type.';
+    
+    const othersRegex = /^[A-Za-z]+( [A-Za-z]+)*$/;
+    if (formData.ornamentTypes.includes('others')) {
+      if (!formData.otherOrnamentType) {
+        newErrors.otherOrnamentType = 'Please specify the ornament type.';
+      } else if (!othersRegex.test(formData.otherOrnamentType)) {
+        newErrors.otherOrnamentType = 'Only alphabets and single spaces allowed.';
+      }
     }
     if (formData.workImages.length === 0) newErrors.workImages = 'Upload at least one work image.';
     if (formData.shopPhotos.length === 0) newErrors.shopPhotos = 'Upload at least one shop photo.';
@@ -126,7 +146,7 @@ const Home = () => {
           <p className="maker-id">@{signUpData.ornaMakerId || 'maker'}</p>
           <div className="badges">
             {signUpData.work && signUpData.work.map(w => (
-              <span key={w.value} className="badge">{w.label}</span>
+              <span key={w} className="badge">{WORK_MAP[w] || w}</span>
             ))}
           </div>
         </div>
