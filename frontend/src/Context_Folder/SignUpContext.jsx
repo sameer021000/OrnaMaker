@@ -39,7 +39,7 @@ export const SignUpProvider = ({ children }) => {
     shopPhotos: [],
     workVideos: [],
     shopVideos: [],
-    certificate: null
+    certificate: []
   });
 
   const updateSignUpData = (newData) => {
@@ -91,7 +91,7 @@ export const SignUpProvider = ({ children }) => {
       shopPhotos: [],
       workVideos: [],
       shopVideos: [],
-      certificate: null
+      certificate: []
     });
   };
 

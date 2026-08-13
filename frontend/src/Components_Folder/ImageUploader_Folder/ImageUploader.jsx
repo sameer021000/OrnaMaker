@@ -60,11 +60,18 @@ const ImageUploader = ({ label, multiple = false, files, onFilesChange, error, a
         );
       } else {
         return (
-          <iframe 
-            src={fileObj.url} 
-            title="PDF Preview"
-            style={{ width: '80vw', height: '80vh', border: 'none', backgroundColor: '#fff', borderRadius: 'var(--radius-md)' }} 
-          />
+          <div style={{ backgroundColor: '#fff', padding: '2rem', borderRadius: 'var(--radius-md)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem', textAlign: 'center' }}>
+            <span style={{ fontSize: '3rem' }}>📄</span>
+            <p style={{ fontWeight: 600, color: 'var(--color-text-main)' }}>PDF Document</p>
+            <a 
+              href={fileObj.url} 
+              target="_blank" 
+              rel="noreferrer"
+              style={{ padding: '0.75rem 1.5rem', backgroundColor: 'var(--color-gold-main)', color: '#fff', borderRadius: 'var(--radius-md)', textDecoration: 'none', fontWeight: 600 }}
+            >
+              Open PDF
+            </a>
+          </div>
         );
       }
     }

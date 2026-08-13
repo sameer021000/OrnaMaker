@@ -127,6 +127,8 @@ const Home = () => {
     if (formData.ornamentTypes.includes('others')) {
       if (!formData.otherOrnamentType) {
         newErrors.otherOrnamentType = 'Please specify the ornament type.';
+      } else if (formData.otherOrnamentType.length < 3) {
+        newErrors.otherOrnamentType = 'Must be at least 3 characters long.';
       } else if (!othersRegex.test(formData.otherOrnamentType)) {
         newErrors.otherOrnamentType = 'Only alphabets and single spaces allowed.';
       }
@@ -159,6 +161,10 @@ const Home = () => {
 
     if (formData.workImages.length === 0) newErrors.workImages = 'Upload at least one work image.';
     if (formData.shopPhotos.length === 0) newErrors.shopPhotos = 'Upload at least one shop photo.';
+    else if (formData.shopPhotos.length > 7) newErrors.shopPhotos = 'Max 7 photos allowed.';
+    
+    if (formData.workVideos.length > 10) newErrors.workVideos = 'Max 10 videos allowed.';
+    if (formData.certificate && formData.certificate.length > 7) newErrors.certificate = 'Max 7 PDFs allowed.';
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -249,11 +255,12 @@ const Home = () => {
               onChange={(val) => handleChange('teamSize', val)}
             />
             <ImageUploader 
-              label="Certificate of Proof (Optional)" 
-              multiple={false} 
+              label="Certificate of Proof (Optional, Max 7)" 
+              multiple={true} 
               accept="application/pdf"
               files={formData.certificate} 
               onFilesChange={(val) => handleChange('certificate', val)}
+              error={errors.certificate}
             />
           </div>
         </div>
@@ -301,18 +308,19 @@ const Home = () => {
               error={errors.workImages}
             />
             <ImageUploader 
-              label="Shop Photos (At least one)" 
+              label="Shop Photos (Min 1, Max 7)" 
               multiple={true} 
               files={formData.shopPhotos} 
               onFilesChange={(val) => handleChange('shopPhotos', val)}
               error={errors.shopPhotos}
             />
             <ImageUploader 
-              label="Work Videos (Optional)" 
+              label="Work Videos (Optional, Max 10)" 
               multiple={true} 
               accept="video/*"
               files={formData.workVideos} 
               onFilesChange={(val) => handleChange('workVideos', val)}
+              error={errors.workVideos}
             />
             <ImageUploader 
               label="Shop Videos (Optional)" 
