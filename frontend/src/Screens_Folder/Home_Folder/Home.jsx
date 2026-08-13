@@ -139,9 +139,12 @@ const Home = () => {
       };
       const fromMin = parseTime(formData.workingHoursFrom);
       let toMin = parseTime(formData.workingHoursTo);
-      if (toMin <= fromMin) toMin += 24 * 60; // Night shift
       
-      if (toMin - fromMin < 30) {
+      if (toMin < fromMin) {
+        toMin += 24 * 60; // Night shift
+      }
+      
+      if (toMin === fromMin || toMin - fromMin < 30) {
         newErrors.workingHoursTo = 'At least 30 mins difference required.';
       }
     }
