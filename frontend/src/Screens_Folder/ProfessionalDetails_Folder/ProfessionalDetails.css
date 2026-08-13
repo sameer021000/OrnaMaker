@@ -31,7 +31,7 @@
 }
 
 .btn-back:hover {
-  background-color: var(--color-accent-light);
-  color: var(--color-primary-blue);
-  border-color: var(--color-primary-blue);
+  background-color: var(--color-gold-light);
+  color: var(--color-gold-main);
+  border-color: var(--color-gold-main);
 }

@@ -28,14 +28,14 @@
 .section-heading {
   font-size: 1.125rem;
   font-weight: 700;
-  color: var(--color-primary-violet);
+  color: var(--color-gold-dark);
   margin: 0;
 }
 
 .btn-copy {
   background: none;
   border: none;
-  color: var(--color-secondary-blue);
+  color: var(--color-gold-main);
   font-size: 0.75rem;
   font-weight: 600;
   cursor: pointer;
@@ -44,7 +44,7 @@
 }
 
 .btn-copy:hover {
-  background-color: var(--color-accent-light);
+  background-color: var(--color-gold-light);
 }
 
 .row-inputs {
@@ -77,7 +77,7 @@
 }
 
 .btn-back:hover {
-  background-color: var(--color-accent-light);
-  color: var(--color-primary-blue);
-  border-color: var(--color-primary-blue);
+  background-color: var(--color-gold-light);
+  color: var(--color-gold-main);
+  border-color: var(--color-gold-main);
 }

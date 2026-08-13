@@ -9,7 +9,7 @@
 .state-label {
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--color-text-dark);
+  color: var(--color-text-main);
   margin-left: 0.25rem;
 }
 
@@ -26,7 +26,7 @@
 }
 
 .state-input-wrapper.state-open {
-  border-color: var(--color-secondary-blue);
+  border-color: var(--color-gold-main);
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
 }
 
@@ -44,7 +44,7 @@
 }
 
 .state-value {
-  color: var(--color-text-dark);
+  color: var(--color-text-main);
 }
 
 .state-arrow {
@@ -75,17 +75,17 @@
 .state-option {
   padding: 0.5rem 1rem;
   cursor: pointer;
-  color: var(--color-text-dark);
+  color: var(--color-text-main);
   transition: background-color 0.2s;
   font-size: 0.9375rem;
 }
 
 .state-option:hover {
-  background-color: var(--color-accent-light);
+  background-color: var(--color-gold-light);
 }
 
 .state-option.selected {
-  background-color: var(--color-primary-blue);
+  background-color: var(--color-gold-main);
   color: var(--color-white);
 }
 

@@ -1,5 +1,5 @@
 .submit-btn {
-  background: linear-gradient(135deg, var(--color-primary-violet) 0%, var(--color-accent-pink) 50%, var(--color-accent-gold) 100%);
+  background: linear-gradient(135deg, var(--color-gold-main) 0%, var(--color-pink-accent) 50%, var(--color-blue-accent) 100%);
   background-size: 200% 200%;
   animation: gradientShift 5s ease infinite;
   color: var(--color-white);
@@ -39,7 +39,7 @@
   margin-left: auto;
   margin-right: auto;
   cursor: default;
-  background: var(--color-primary-violet);
+  background: var(--color-gold-dark);
   animation: none;
 }
 

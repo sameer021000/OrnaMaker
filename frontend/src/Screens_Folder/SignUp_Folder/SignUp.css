@@ -52,11 +52,11 @@
   text-align: center;
   margin-top: 1.5rem;
   font-size: 0.875rem;
-  color: var(--color-text-dark);
+  color: var(--color-text-main);
 }
 
 .signin-link {
-  color: var(--color-primary-blue);
+  color: var(--color-gold-main);
   font-weight: 600;
   text-decoration: none;
 }
