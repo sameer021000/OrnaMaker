@@ -42,7 +42,8 @@ const DAYS_OF_WEEK = [
   { label: 'Thu', value: 'Thu' },
   { label: 'Fri', value: 'Fri' },
   { label: 'Sat', value: 'Sat' },
-  { label: 'Sun', value: 'Sun' }
+  { label: 'Sun', value: 'Sun' },
+  { label: 'No Holiday', value: 'No Holiday' }
 ];
 
 const Home = () => {
@@ -76,11 +77,11 @@ const Home = () => {
   // Calculate profile completion progress dynamically
   useEffect(() => {
     let completed = 0;
-    const totalFields = 6; // ProfilePic, ShopName, OrnamentTypes, WorkingHours, WorkImages, ShopPhotos
+    const totalFields = 6; 
     if (formData.profilePic) completed++;
     if (formData.shopName) completed++;
     if (formData.ornamentTypes.length > 0) completed++;
-    if (formData.workingHoursFrom && formData.workingHoursTo) completed++;
+    if (formData.workingHoursFrom && formData.workingHoursTo && formData.weeklyHolidays.length > 0) completed++;
     if (formData.workImages.length > 0) completed++;
     if (formData.shopPhotos.length > 0) completed++;
     
@@ -88,7 +89,21 @@ const Home = () => {
   }, [formData]);
 
   const handleChange = (field, value) => {
-    setFormData({ ...formData, [field]: value });
+    let newValue = value;
+    
+    // Constraints for Weekly Holidays
+    if (field === 'weeklyHolidays') {
+      const previouslyHadNoHoliday = formData.weeklyHolidays.includes('No Holiday');
+      const newlyHasNoHoliday = value.includes('No Holiday');
+      
+      if (newlyHasNoHoliday && !previouslyHadNoHoliday) {
+        newValue = ['No Holiday'];
+      } else if (newlyHasNoHoliday && previouslyHadNoHoliday && value.length > 1) {
+        newValue = value.filter(v => v !== 'No Holiday');
+      }
+    }
+
+    setFormData({ ...formData, [field]: newValue });
     if (errors[field]) setErrors({ ...errors, [field]: null });
   };
 
@@ -114,6 +129,29 @@ const Home = () => {
         newErrors.otherOrnamentType = 'Only alphabets and single spaces allowed.';
       }
     }
+
+    if (!formData.workingHoursFrom) newErrors.workingHoursFrom = 'Required.';
+    if (!formData.workingHoursTo) newErrors.workingHoursTo = 'Required.';
+    if (formData.workingHoursFrom && formData.workingHoursTo) {
+      const parseTime = (t) => {
+        const [h, m] = t.split(':').map(Number);
+        return h * 60 + m;
+      };
+      const fromMin = parseTime(formData.workingHoursFrom);
+      let toMin = parseTime(formData.workingHoursTo);
+      if (toMin <= fromMin) toMin += 24 * 60; // Night shift
+      
+      if (toMin - fromMin < 30) {
+        newErrors.workingHoursTo = 'At least 30 mins difference required.';
+      }
+    }
+
+    if (formData.weeklyHolidays.length === 0) {
+      newErrors.weeklyHolidays = 'Select at least one option.';
+    } else if (formData.weeklyHolidays.length === 7 && !formData.weeklyHolidays.includes('No Holiday')) {
+      newErrors.weeklyHolidays = 'You must work at least one day.';
+    }
+
     if (formData.workImages.length === 0) newErrors.workImages = 'Upload at least one work image.';
     if (formData.shopPhotos.length === 0) newErrors.shopPhotos = 'Upload at least one shop photo.';
     
@@ -212,18 +250,21 @@ const Home = () => {
         <div className="module-card">
           <h3 className="module-title">Operations</h3>
           <div className="module-body">
+            <h4 style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--color-gold-dark)', margin: '0 0 -0.5rem 0.25rem' }}>Working Hours</h4>
             <div className="row">
               <InputBox 
-                label="Working Hours (From)" 
+                label="From" 
                 type="time"
                 value={formData.workingHoursFrom} 
                 onChange={(e) => handleChange('workingHoursFrom', e.target.value)}
+                error={errors.workingHoursFrom}
               />
               <InputBox 
-                label="Working Hours (To)" 
+                label="To" 
                 type="time"
                 value={formData.workingHoursTo} 
                 onChange={(e) => handleChange('workingHoursTo', e.target.value)}
+                error={errors.workingHoursTo}
               />
             </div>
             <MultiSelectChip 
@@ -231,6 +272,7 @@ const Home = () => {
               options={DAYS_OF_WEEK} 
               selectedOptions={formData.weeklyHolidays} 
               onChange={(val) => handleChange('weeklyHolidays', val)}
+              error={errors.weeklyHolidays}
             />
           </div>
         </div>
