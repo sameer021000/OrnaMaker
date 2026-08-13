@@ -117,8 +117,7 @@ const PersonalDetails = () => {
         const isValid = validate();
         if (isValid) {
           updateSignUpData(formData);
-          // Finished SignUp flow, redirect to SignIn or dashboard
-          navigate('/signin');
+          navigate('/home');
           resolve(true);
         } else {
           resolve(false);

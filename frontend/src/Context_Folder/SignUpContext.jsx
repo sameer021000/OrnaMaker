@@ -26,7 +26,16 @@ export const SignUpProvider = ({ children }) => {
     homeCity: '',
     homePincode: '',
     homeStreet: '',
-    homeLandmark: ''
+    homeLandmark: '',
+    profilePic: null,
+    shopName: '',
+    ornamentTypes: [],
+    teamSize: 'Individual',
+    workingHours: '',
+    weeklyHolidays: '',
+    workImages: [],
+    shopPhotos: [],
+    workVideos: []
   });
 
   const updateSignUpData = (newData) => {
@@ -65,7 +74,16 @@ export const SignUpProvider = ({ children }) => {
       homeCity: '',
       homePincode: '',
       homeStreet: '',
-      homeLandmark: ''
+      homeLandmark: '',
+      profilePic: null,
+      shopName: '',
+      ornamentTypes: [],
+      teamSize: 'Individual',
+      workingHours: '',
+      weeklyHolidays: '',
+      workImages: [],
+      shopPhotos: [],
+      workVideos: []
     });
   };
 

@@ -7,6 +7,7 @@ import SignUp2 from './Screens_Folder/SignUp_Folder/SignUp2_Folder/SignUp2';
 import ProfessionalDetails from './Screens_Folder/SignUp_Folder/ProfessionalDetails_Folder/ProfessionalDetails';
 import PersonalDetails from './Screens_Folder/SignUp_Folder/PersonalDetails_Folder/PersonalDetails';
 import SignIn from './Screens_Folder/SignIn_Folder/SignIn';
+import Home from './Screens_Folder/Home_Folder/Home';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/professional-details" element={<ProfessionalDetails />} />
           <Route path="/personal-details" element={<PersonalDetails />} />
           <Route path="/signin" element={<SignIn />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/" element={<Navigate to="/signup" replace />} />
         </Routes>
       </BrowserRouter>
