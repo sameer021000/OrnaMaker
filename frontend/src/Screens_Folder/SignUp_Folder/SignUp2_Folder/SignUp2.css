@@ -1,0 +1,39 @@
+.signup2-container {
+  justify-content: space-between;
+}
+
+.password-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.password-hints {
+  list-style: none;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 0.25rem;
+}
+
+.password-hints li {
+  display: flex;
+  align-items: center;
+}
+
+.password-hints li::before {
+  content: '○';
+  margin-right: 0.5rem;
+  font-size: 0.6rem;
+}
+
+.password-hints li.met {
+  color: var(--color-gold-dark);
+}
+
+.password-hints li.met::before {
+  content: '●';
+}

@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import MultiSelectChip from '../../Components_Folder/MultiSelectChip_Folder/MultiSelectChip';
-import DateSelector from '../../Components_Folder/DateSelector_Folder/DateSelector';
-import SubmitButton from '../../Components_Folder/SubmitButton_Folder/SubmitButton';
+import MultiSelectChip from '../../../Components_Folder/MultiSelectChip_Folder/MultiSelectChip';
+import DateSelector from '../../../Components_Folder/DateSelector_Folder/DateSelector';
+import SubmitButton from '../../../Components_Folder/SubmitButton_Folder/SubmitButton';
+import { useSignUp } from '../../../Context_Folder/SignUpContext';
 import './ProfessionalDetails.css';
 
 const WORK_OPTIONS = [
@@ -14,9 +15,18 @@ const WORK_OPTIONS = [
 
 const ProfessionalDetails = () => {
   const navigate = useNavigate();
+  const { signUpData, updateSignUpData, getEnteredNameMessage } = useSignUp();
+  
+  // Kick back to start if missing context
+  useEffect(() => {
+    if (!signUpData.firstName) {
+      navigate('/signup', { replace: true });
+    }
+  }, [signUpData.firstName, navigate]);
+
   const [formData, setFormData] = useState({
-    work: [],
-    sinceWhen: ''
+    work: signUpData.work || [],
+    sinceWhen: signUpData.sinceWhen || ''
   });
   
   const [errors, setErrors] = useState({});
@@ -51,19 +61,20 @@ const ProfessionalDetails = () => {
       setTimeout(() => {
         const isValid = validate();
         if (isValid) {
+          updateSignUpData(formData);
           navigate('/personal-details');
           resolve(true);
         } else {
           resolve(false);
         }
-      }, 800);
+      }, 500);
     });
   };
 
   return (
     <div className="screen-container pro-details-container">
       <div>
-        <h1 className="screen-title">Professional Details</h1>
+        <h1 className="screen-title">{getEnteredNameMessage()}</h1>
         <p className="screen-subtitle">Tell us about your expertise</p>
       </div>
 
@@ -85,7 +96,7 @@ const ProfessionalDetails = () => {
       </div>
 
       <div className="button-group">
-        <button type="button" className="btn-back" onClick={() => navigate(-1)}>Back</button>
+        <button type="button" className="btn-back" onClick={() => navigate('/signup-step-2')}>Back</button>
         <SubmitButton text="Next Step" onClick={handleSubmit} />
       </div>
     </div>

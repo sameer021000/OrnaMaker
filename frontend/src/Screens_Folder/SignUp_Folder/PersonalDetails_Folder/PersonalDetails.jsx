@@ -1,31 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import EmailBox from '../../Components_Folder/EmailBox_Folder/EmailBox';
-import PhoneBox from '../../Components_Folder/PhoneBox_Folder/PhoneBox';
-import StateSelector from '../../Components_Folder/StateSelector_Folder/StateSelector';
-import InputBox from '../../Components_Folder/InputBox_Folder/InputBox';
-import TextAreaBox from '../../Components_Folder/TextAreaBox_Folder/TextAreaBox';
-import SubmitButton from '../../Components_Folder/SubmitButton_Folder/SubmitButton';
+import EmailBox from '../../../Components_Folder/EmailBox_Folder/EmailBox';
+import PhoneBox from '../../../Components_Folder/PhoneBox_Folder/PhoneBox';
+import StateSelector from '../../../Components_Folder/StateSelector_Folder/StateSelector';
+import InputBox from '../../../Components_Folder/InputBox_Folder/InputBox';
+import TextAreaBox from '../../../Components_Folder/TextAreaBox_Folder/TextAreaBox';
+import SubmitButton from '../../../Components_Folder/SubmitButton_Folder/SubmitButton';
+import { useSignUp } from '../../../Context_Folder/SignUpContext';
 import './PersonalDetails.css';
 
 const PersonalDetails = () => {
   const navigate = useNavigate();
+  const { signUpData, updateSignUpData, getEnteredNameMessage } = useSignUp();
+
+  // Kick back to start if missing context
+  useEffect(() => {
+    if (!signUpData.firstName) {
+      navigate('/signup', { replace: true });
+    }
+  }, [signUpData.firstName, navigate]);
 
   const [formData, setFormData] = useState({
-    email: '',
-    altPhone: '',
-    shopState: '',
-    shopDistrict: '',
-    shopCity: '',
-    shopPincode: '',
-    shopStreet: '',
-    shopLandmark: '',
-    homeState: '',
-    homeDistrict: '',
-    homeCity: '',
-    homePincode: '',
-    homeStreet: '',
-    homeLandmark: ''
+    email: signUpData.email || '',
+    altPhone: signUpData.altPhone || '',
+    shopState: signUpData.shopState || '',
+    shopDistrict: signUpData.shopDistrict || '',
+    shopCity: signUpData.shopCity || '',
+    shopPincode: signUpData.shopPincode || '',
+    shopStreet: signUpData.shopStreet || '',
+    shopLandmark: signUpData.shopLandmark || '',
+    homeState: signUpData.homeState || '',
+    homeDistrict: signUpData.homeDistrict || '',
+    homeCity: signUpData.homeCity || '',
+    homePincode: signUpData.homePincode || '',
+    homeStreet: signUpData.homeStreet || '',
+    homeLandmark: signUpData.homeLandmark || ''
   });
 
   const [errors, setErrors] = useState({});
@@ -107,13 +116,14 @@ const PersonalDetails = () => {
       setTimeout(() => {
         const isValid = validate();
         if (isValid) {
+          updateSignUpData(formData);
           // Finished SignUp flow, redirect to SignIn or dashboard
           navigate('/signin');
           resolve(true);
         } else {
           resolve(false);
         }
-      }, 800);
+      }, 500);
     });
   };
 
@@ -136,7 +146,7 @@ const PersonalDetails = () => {
   return (
     <div className="screen-container personal-details-container">
       <div>
-        <h1 className="screen-title">Personal Details</h1>
+        <h1 className="screen-title">{getEnteredNameMessage()}</h1>
         <p className="screen-subtitle">Help us reach you easily</p>
       </div>
 
@@ -259,7 +269,7 @@ const PersonalDetails = () => {
       </div>
 
       <div className="button-group">
-        <button type="button" className="btn-back" onClick={() => navigate(-1)}>Back</button>
+        <button type="button" className="btn-back" onClick={() => navigate('/professional-details')}>Back</button>
         <SubmitButton text="Finish Sign Up" onClick={handleSubmit} />
       </div>
     </div>
