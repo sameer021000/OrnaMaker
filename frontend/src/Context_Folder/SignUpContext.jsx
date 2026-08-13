@@ -37,7 +37,9 @@ export const SignUpProvider = ({ children }) => {
     weeklyHolidays: [],
     workImages: [],
     shopPhotos: [],
-    workVideos: []
+    workVideos: [],
+    shopVideos: [],
+    certificate: null
   });
 
   const updateSignUpData = (newData) => {
@@ -87,7 +89,9 @@ export const SignUpProvider = ({ children }) => {
       weeklyHolidays: [],
       workImages: [],
       shopPhotos: [],
-      workVideos: []
+      workVideos: [],
+      shopVideos: [],
+      certificate: null
     });
   };
 

@@ -68,7 +68,9 @@ const Home = () => {
     weeklyHolidays: signUpData.weeklyHolidays || [],
     workImages: signUpData.workImages || [],
     shopPhotos: signUpData.shopPhotos || [],
-    workVideos: signUpData.workVideos || []
+    workVideos: signUpData.workVideos || [],
+    shopVideos: signUpData.shopVideos || [],
+    certificate: signUpData.certificate || null
   });
 
   const [errors, setErrors] = useState({});
@@ -246,6 +248,13 @@ const Home = () => {
               selectedValue={formData.teamSize} 
               onChange={(val) => handleChange('teamSize', val)}
             />
+            <ImageUploader 
+              label="Certificate of Proof (Optional)" 
+              multiple={false} 
+              accept="application/pdf"
+              files={formData.certificate} 
+              onFilesChange={(val) => handleChange('certificate', val)}
+            />
           </div>
         </div>
 
@@ -304,6 +313,13 @@ const Home = () => {
               accept="video/*"
               files={formData.workVideos} 
               onFilesChange={(val) => handleChange('workVideos', val)}
+            />
+            <ImageUploader 
+              label="Shop Videos (Optional)" 
+              multiple={true} 
+              accept="video/*"
+              files={formData.shopVideos} 
+              onFilesChange={(val) => handleChange('shopVideos', val)}
             />
           </div>
         </div>

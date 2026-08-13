@@ -35,8 +35,8 @@ const ImageUploader = ({ label, multiple = false, files, onFilesChange, error, a
   const renderMedia = (fileObj, isThumbnail = true) => {
     if (!fileObj || !fileObj.url) return null;
     
-    // Check if it's a video file or if it's explicitly stated in accept
     const isVideo = (fileObj.type && fileObj.type.startsWith('video')) || accept.includes('video');
+    const isPdf = (fileObj.type && fileObj.type.includes('pdf')) || accept.includes('pdf');
     
     if (isVideo) {
       return (
@@ -50,6 +50,25 @@ const ImageUploader = ({ label, multiple = false, files, onFilesChange, error, a
         />
       );
     }
+    
+    if (isPdf) {
+      if (isThumbnail) {
+        return (
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%', backgroundColor: '#f3f4f6', color: 'var(--color-error)', fontWeight: 'bold', fontSize: '1.25rem' }}>
+            PDF
+          </div>
+        );
+      } else {
+        return (
+          <iframe 
+            src={fileObj.url} 
+            title="PDF Preview"
+            style={{ width: '80vw', height: '80vh', border: 'none', backgroundColor: '#fff', borderRadius: 'var(--radius-md)' }} 
+          />
+        );
+      }
+    }
+
     return <img src={fileObj.url} alt="Preview" />;
   };
 
