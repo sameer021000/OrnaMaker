@@ -1,0 +1,84 @@
+.profile-logistics {
+  display: flex;
+  flex-direction: column;
+}
+
+.blue-tabs {
+  display: flex;
+  background-color: rgba(14, 165, 233, 0.05); /* 5% Blue */
+  border-radius: var(--radius-full);
+  padding: 0.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.blue-tab {
+  flex: 1;
+  padding: 0.75rem 0.5rem;
+  border: none;
+  background: transparent;
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.blue-tab.active {
+  background-color: var(--color-blue-accent);
+  color: var(--color-white);
+  box-shadow: 0 4px 10px rgba(14, 165, 233, 0.3);
+}
+
+.logistics-content-area {
+  min-height: 120px;
+}
+
+.logistics-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hours-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.hours-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.hours-block.full-width {
+  grid-column: span 2;
+}
+
+.logistics-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: rgba(14, 165, 233, 0.8);
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.logistics-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+.address-layout {
+  padding: 0.5rem 0;
+}
+
+.address-paragraph {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-main);
+}

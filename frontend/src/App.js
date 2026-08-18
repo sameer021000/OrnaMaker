@@ -8,6 +8,8 @@ import ProfessionalDetails from './Screens_Folder/SignUp_Folder/ProfessionalDeta
 import PersonalDetails from './Screens_Folder/SignUp_Folder/PersonalDetails_Folder/PersonalDetails';
 import SignIn from './Screens_Folder/SignIn_Folder/SignIn';
 import Home from './Screens_Folder/Home_Folder/Home';
+import OrnaMakerProfile from './Screens_Folder/OrnaMakerProfile_Folder/OrnaMakerProfile';
+import ProfileGalleryScreen from './Screens_Folder/OrnaMakerProfile_Folder/ProfileGalleryScreen';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
           <Route path="/personal-details" element={<PersonalDetails />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/ornamaker-profile" element={<OrnaMakerProfile />} />
+          <Route path="/ornamaker-profile/gallery/:type" element={<ProfileGalleryScreen />} />
           <Route path="/" element={<Navigate to="/signup" replace />} />
         </Routes>
       </BrowserRouter>

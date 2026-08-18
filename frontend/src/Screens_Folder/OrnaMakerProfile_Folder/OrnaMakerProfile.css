@@ -1,0 +1,22 @@
+.multi-chromatic-profile {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg-app);
+  min-height: 100vh;
+  padding-bottom: 3rem;
+  /* Instead of gap, we let sections handle their own flow */
+}
+
+/* Global utility for sections */
+.chromatic-section {
+  padding: 2rem 1.5rem;
+}
+
+.chromatic-section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
