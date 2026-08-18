@@ -10,6 +10,7 @@ import SignIn from './Screens_Folder/SignIn_Folder/SignIn';
 import Home from './Screens_Folder/Home_Folder/Home';
 import ActualHome from './Screens_Folder/ActualHome_Folder/ActualHome';
 import OrnaMakerProfile from './Screens_Folder/OrnaMakerProfile_Folder/OrnaMakerProfile';
+import Reviews from './Screens_Folder/Reviews_Folder/Reviews';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/actual-home" element={<ActualHome />} />
           <Route path="/profile" element={<OrnaMakerProfile />} />
+          <Route path="/reviews" element={<Reviews />} />
           <Route path="/" element={<Navigate to="/signup" replace />} />
         </Routes>
       </BrowserRouter>

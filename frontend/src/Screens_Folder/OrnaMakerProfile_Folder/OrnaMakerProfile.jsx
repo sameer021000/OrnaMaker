@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSignUp } from '../../Context_Folder/SignUpContext';
-import IdentityHeader from './Profile_Components/IdentityHeader';
-import ExpertiseSection from './Profile_Components/ExpertiseSection';
-import PortfolioCarousel from './Profile_Components/PortfolioCarousel';
-import OperationsSection from './Profile_Components/OperationsSection';
-import AddressSection from './Profile_Components/AddressSection';
+import IdentityHeader from '../../Components_Folder/OrnaMakerProfileComponents_Folder/IdentityHeader_Folder/IdentityHeader';
+import ExpertiseSection from '../../Components_Folder/OrnaMakerProfileComponents_Folder/ExpertiseSection_Folder/ExpertiseSection';
+import PortfolioCarousel from '../../Components_Folder/OrnaMakerProfileComponents_Folder/PortfolioCarousel_Folder/PortfolioCarousel';
+import OperationsSection from '../../Components_Folder/OrnaMakerProfileComponents_Folder/OperationsSection_Folder/OperationsSection';
+import AddressSection from '../../Components_Folder/OrnaMakerProfileComponents_Folder/AddressSection_Folder/AddressSection';
 import BottomNav from '../../Components_Folder/BottomNav_Folder/BottomNav';
 import './OrnaMakerProfile.css';
 
