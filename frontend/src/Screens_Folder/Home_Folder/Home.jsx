@@ -177,7 +177,7 @@ const Home = () => {
         const isValid = validate();
         if (isValid) {
           updateSignUpData(formData);
-          navigate('/ornamaker-profile');
+          alert('Profile Aired Successfully! Your profile is now visible on OrnaMilan.');
           resolve(true);
         } else {
           // Scroll to top to show errors or just let them see red
