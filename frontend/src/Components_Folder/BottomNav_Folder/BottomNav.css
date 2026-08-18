@@ -19,16 +19,15 @@
   max-width: 400px;
   height: 65px;
   
-  /* Glassmorphism Effect */
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  /* Dark Glassmorphism Effect */
+  background: rgba(15, 23, 42, 0.85); /* Dark navy */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   
   /* Beautiful floating pill design */
   border-radius: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 8px 32px rgba(30, 58, 138, 0.1), 
-              0 2px 8px rgba(245, 158, 11, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
 
 .nav-item {
@@ -38,7 +37,7 @@
   justify-content: center;
   gap: 4px;
   flex: 1;
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.5); /* muted light text */
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -48,7 +47,7 @@
   justify-content: center;
   align-items: center;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  color: #9ca3af; /* muted gray */
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .nav-label {
@@ -63,12 +62,12 @@
 
 /* Active State Styles */
 .nav-item.active {
-  color: var(--color-gold-dark);
+  color: var(--color-gold-main);
 }
 
 .nav-item.active .nav-icon {
   transform: translateY(-8px);
-  color: var(--color-gold-dark);
+  color: var(--color-gold-main);
 }
 
 .nav-item.active .nav-label {
