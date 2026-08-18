@@ -1,0 +1,66 @@
+.address-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.addresses-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.address-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.address-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-gold-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.address-title::before {
+  content: '📍';
+  font-size: 1rem;
+}
+
+.address-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem 1rem;
+  background-color: rgba(0, 0, 0, 0.02);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.addr-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.addr-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: 0.15rem;
+}
+
+.addr-value {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  word-break: break-word;
+}
+
+.address-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(0,0,0,0.1), transparent);
+}

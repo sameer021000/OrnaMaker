@@ -177,7 +177,7 @@ const Home = () => {
         const isValid = validate();
         if (isValid) {
           updateSignUpData(formData);
-          alert('Profile Aired Successfully! Your profile is now visible on OrnaMilan.');
+          navigate('/actual-home');
           resolve(true);
         } else {
           // Scroll to top to show errors or just let them see red

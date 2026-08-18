@@ -1,0 +1,29 @@
+.actual-home-screen {
+  background-color: var(--color-bg-app);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 65px; /* Height of bottom nav */
+}
+
+.actual-home-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.welcome-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-gold-dark);
+  margin-bottom: 0.5rem;
+}
+
+.sub-text {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
