@@ -69,6 +69,8 @@ const SignUp2 = () => {
       newErrors.ornaMakerId = 'OrnaMaker ID is required.';
     } else if (formData.ornaMakerId.length < 4) {
       newErrors.ornaMakerId = 'Must be at least 4 characters.';
+    } else if (formData.ornaMakerId.length > 10) {
+      newErrors.ornaMakerId = 'Must not be more than 10 characters.';
     } else if (!idRegex.test(formData.ornaMakerId)) {
       newErrors.ornaMakerId = 'Only alphanumeric and @, $, _ allowed. No spaces.';
     }
@@ -133,6 +135,7 @@ const SignUp2 = () => {
           value={formData.ornaMakerId}
           onChange={handleIdChange}
           error={errors.ornaMakerId}
+          maxLength="10"
           placeholder="ID (e.g. maker_123$)"
         />
       </div>

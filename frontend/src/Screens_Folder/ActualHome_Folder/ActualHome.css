@@ -1,9 +1,11 @@
 .actual-home-screen {
-  background-color: var(--color-bg-app);
+  background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.08), transparent 40%),
+              radial-gradient(circle at bottom left, rgba(236, 72, 153, 0.08), transparent 40%),
+              var(--color-bg-app);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding-bottom: 65px; /* Height of bottom nav */
+  padding-bottom: 100px; /* Room for floating bottom nav */
 }
 
 .actual-home-content {

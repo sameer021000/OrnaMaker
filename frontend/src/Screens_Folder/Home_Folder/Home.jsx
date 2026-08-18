@@ -114,7 +114,8 @@ const Home = () => {
 
     if (!formData.profilePic) newErrors.profilePic = 'Profile picture is mandatory.';
     
-    const shopNameRegex = /^[A-Za-z0-9@#$_\-&+*:;!?()[\]]+( [A-Za-z0-9@#$_\-&+*:;!?()[\]]+)*$/;
+    // Shop name allows alphanumeric, basic symbols, and apostrophe
+    const shopNameRegex = /^[A-Za-z0-9@#$_\-&+:;!?()[\]']+([ A-Za-z0-9@#$_\-&+:;!?()[\]']+)*$/;
     if (!formData.shopName) {
       newErrors.shopName = 'Shop name is required.';
     } else if (!shopNameRegex.test(formData.shopName)) {
